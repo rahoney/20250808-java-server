@@ -51,11 +51,13 @@ public class AIServlet extends HttpServlet { // [1]
         // input/post -> paramter
         String question = req.getParameter("question");
         // [2]
-        Dotenv dotenv = Dotenv.load();
+        // [II]
+        Dotenv dotenv = Dotenv.configure()
+                .ignoreIfMissing().load(); // 배포환경에서, '없으면 무시'
         String apiKey = dotenv.get("GOOGLE_API_KEY");
         Client client = Client.builder()
                 .apiKey(apiKey).build();
-        String data = client.models.generateContent("gemini-2.5-flash",
+        String data = client.models.generateContent("gemini-2.0-flash",
                         question, GenerateContentConfig.builder().systemInstruction(Content.builder()
                                 .parts(Part.builder().text(
                                         "100자 이내로, 마크다운 없이 간결하게 평문으로."))).build()) // [4]
