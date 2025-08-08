@@ -13,7 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 // [2]
-@WebServlet("/") // localhost:8080/ai
+//@WebServlet("/ai") // localhost:8080/ai
+@WebServlet("/") // localhost:8080/
 // 이 서블릿을 통해 호출
 public class AIServlet extends HttpServlet { // [1]
     // doGet, doPost
@@ -57,7 +58,7 @@ public class AIServlet extends HttpServlet { // [1]
         String apiKey = dotenv.get("GOOGLE_API_KEY");
         Client client = Client.builder()
                 .apiKey(apiKey).build();
-        String data = client.models.generateContent("gemini-2.0-flash",
+        String data = client.models.generateContent("gemini-2.5-flash",
                         question, GenerateContentConfig.builder().systemInstruction(Content.builder()
                                 .parts(Part.builder().text(
                                         "100자 이내로, 마크다운 없이 간결하게 평문으로."))).build()) // [4]
