@@ -8,8 +8,8 @@
 <head>
     <title>내가 만든 챗봇</title>
     <!-- OG Tag -->
-    <meta property="og:title" content="내가 만든 챗봇">
-    <meta property="og:description" content="Gemini 2.0 Flash로 구현한 챗봇">
+    <meta property="og:title" content="Gemini 2.5 활용 챗봇">
+    <meta property="og:description" content="Gemini 2.5 Flash로 구현한 챗봇">
     <!-- Web Font -->
     <style>
         /* SunBatang-Light 라는 이름으로 외부 링크의 폰트를 받아오겠다 */
